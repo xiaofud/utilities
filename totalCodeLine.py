@@ -23,7 +23,7 @@ def get_suffix():
     """
     suffix_list = list()
     while True:
-        suffix = input("input the suffix like .cpp(end input by empty line)\n")
+        suffix = input("input the suffix like cpp(end input by empty line)\n")
         suffix = suffix.strip()
         if suffix == "":
             break
@@ -43,6 +43,7 @@ def get_line_count(root_path, suffix_list):
             # print(os.path.abspath(file))
             # 匹配后缀名
             file_suffix = os.path.splitext(file)[1]
+            file_suffix = file_suffix.strip('.')
             if file_suffix in suffix_list:
                 # 读取该文件
                 with open(os.path.join(root, file)) as f:
