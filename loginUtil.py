@@ -4,6 +4,7 @@ __author__ = 'smallfly'
 
 import requests
 import re
+import sys
 
 LOGIN_ADDRESS = "http://1.1.1.2/ac_portal/login.php"
 FLOW_ADDRESS = "http://1.1.1.2/ac_portal/userflux"
@@ -66,7 +67,14 @@ def interact():
 
 
 def main():
-    choice = interact()
+    choice = None
+    if len(sys.argv) > 1:
+        try:
+            choice = sys.argv[1]
+        except Exception:
+            choice = None
+    if choice is None:
+        choice = interact()
     if choice == '1':
         login_interaction()
         query_quota(display=True)
